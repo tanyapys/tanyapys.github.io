@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Угадай число</title> 
+	<style type="text/css">
+		#wrap {
+			width: 500px;
+			height: 250px;
+			background-color:#5E676D;
+			margin:100px auto;
+			border:5px solid lightgrey;
+			text-align: center;
+			color: yellow;
+			font-family:Calibri;
+			font-size: 24px;
+
+		}
+		#input{
+			width: 500px;
+				
+		}
+		#userInput{
+			width: 100px;
+			height: 30px;
+			border:none;
+			text-align: center;
+			position: relative;
+			right: 10px;
+			border-radius: 10px;
+		}
+		#guessBtn{
+			width: 100px;
+			height: 30px;
+			width: 100px;
+			color:white;
+			background-color: #A0A0A0;
+			font-family:Calibri;
+			border:none; 
+			font-size: 18px;
+			position: relative;
+			left: 10px;
+			border-radius: 10px;
+			border:none;
+		  
+		}
+		#outPut{
+			margin-top: 30px;
+			margin-bottom: 40px;
+			font-family:Calibri;
+			font-size: 24px;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<div id="wrap"><p>Угадай число</p>
+		<div id="input">  
+			<input type="text" id="userInput"/>
+			<input type="button" id="guessBtn" value="Угадать" onclick="guess()"/>	
+		</div>	
+			<div id="outPut"></div>
+			<div id="info"></div>
+	</div>
+
+	<script type="text/javascript">
+		var numPr, tempOut;
+		var k=5;
+		numPr=Math.floor((Math.random()*10)+1);
+		console.log(numPr);
+
+		function guess() {
+			var userInput, outPut, info;
+			
+	
+			userInput=document.getElementById("userInput").value;
+			outPut=document.getElementById("outPut");
+			info=document.getElementById("info");
+			if(k>0){
+
+			if (userInput < numPr) {
+				outPut.innerHTML="Ваше число меньше";	
+				info.innerHTML="Осталось попыток "+(k-1)+" из 5"
+			}
+			else if (userInput > numPr){
+				outPut.innerHTML="Ваше число больше";
+				info.innerHTML="Осталось попыток "+(k-1)+" из 5"
+			}
+			else if (userInput == numPr) {
+				outPut.innerHTML="Вы угадали";	
+				info.innerHTML="C "+(6-k)+" попытки"
+			}
+       		 }
+       		 k--
+       		if(k==0){
+       			info.innerHTML="Попытки закончились! Загаданное число "+numPr+"";
+       		}
+       	}	 
+       
+	</script>
+	</body>
+</html>
+
